@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import Navbar from './components/layout/Navbar'
 import Index from './components/layout/Index'
-import convert from 'xml-js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
-
-fetch('https://feeds.megaphone.fm/harmontown')
-      .then(response => response.text())
-      .then(function(data){
-        console.log(convert.xml2json(data, {compact: true, spaces: 2}));
-      })
+import { Provider } from './context'
 
 class App extends Component {
   render() {
     return (
+      <Provider>
       <Router>
         <React.Fragment>
           <Navbar/>
@@ -24,6 +19,7 @@ class App extends Component {
           </div>
         </React.Fragment>
       </Router>
+      </Provider>
     )
   }
 }

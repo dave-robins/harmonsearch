@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import { Consumer } from '../../context'
 
 class Episodes extends Component {
     render() {
         return (
-            <div>
-                <h1>https://feeds.megaphone.fm/harmontown</h1>
-            </div>
+            <Consumer>
+                {value => {
+                    console.log(value)
+                    return <h1>Tracks</h1>
+                }}
+            </Consumer>
         )
     }
 }
