@@ -6,7 +6,7 @@ const Context = React.createContext()
 export class Provider extends Component {
     state = {
         episode_list: [],
-        heading: 'Top 10 Tracks'
+        heading: 'Recent Episodes'
     }
 
 componentDidMount(){
@@ -14,9 +14,14 @@ componentDidMount(){
       .then(res => res.text())
       .then(data => {
         var newJson = convert.xml2js(data);
-        console.log(newJson.elements[0].elements[0].elements[15].elements[0].elements[0].text)
-        console.log(newJson);
-        this.setState({episode_list: newJson.elements[0].elements[0].elements})
+        let filtered = (newJson.elements[0].elements[0].elements).filter((episode) => {
+            return episode.name === "item"
+        })
+        console.log(filtered)
+        // let titles = filtered.map((episode) => {
+        //     return episode.elements[0].elements[0].text
+        // })
+        this.setState({episode_list: filtered})
       })
 }
 
