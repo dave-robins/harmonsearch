@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import convert from 'xml-js';
+
 const Context = React.createContext()
 
 export class Provider extends Component {
@@ -12,9 +13,10 @@ componentDidMount(){
     fetch('https://feeds.megaphone.fm/harmontown')
       .then(res => res.text())
       .then(data => {
-        const newJson = convert.xml2json(data, {compact: true, spaces: 2})
+        var newJson = convert.xml2js(data);
+        console.log(newJson.elements[0].elements[0].elements[15].elements[0].elements[0].text)
         console.log(newJson);
-        this.setState({episode_list: newJson.rss})
+        this.setState({episode_list: newJson.elements[0].elements[0].elements})
       })
 }
 
