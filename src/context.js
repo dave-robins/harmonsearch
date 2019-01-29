@@ -17,10 +17,6 @@ componentDidMount(){
         let filtered = (newJson.elements[0].elements[0].elements).filter((episode) => {
             return episode.name === "item"
         })
-        console.log(filtered)
-        // let titles = filtered.map((episode) => {
-        //     return episode.elements[0].elements[0].text
-        // })
         this.setState({episode_list: filtered})
       })
 }
