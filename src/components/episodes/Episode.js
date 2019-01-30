@@ -22,7 +22,7 @@ const Episode = (props) => {
         <h5>{getParam(episode, "title")}</h5>
         <p>{trimDescription(getParam(props.episode, "description"))}</p>
         <Link 
-          to={`details/episode/${episode.name}`}
+          to={`details/episode/${(getParam(episode, "title")).replace(/ /g, '_')}`}
           className="btn btn-dark btn-block"
         >
           <i className="fas fa-chevron-right"></i> View Details

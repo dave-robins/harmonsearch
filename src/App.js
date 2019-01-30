@@ -17,7 +17,7 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Index}/>
-              <Route exact path="/details/episodes/:id" component={Details}/>
+              <Route exact path="/details/episode/:id" component={Details}/>
             </Switch>
           </div>
         </React.Fragment>

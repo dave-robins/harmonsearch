@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
-class Lyrics extends Component {
+class Details extends Component {
+  state = {
+    episode: {},
+    details: {}
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +15,4 @@ class Lyrics extends Component {
   }
 }
 
-export default Lyrics
+export default Details
