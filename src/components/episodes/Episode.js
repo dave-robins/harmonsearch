@@ -15,6 +15,7 @@ const trimDescription = (text) => {
 
 const Episode = (props) => {
   const { episode } = props
+  // console.log(episode)
 
   return (
     <div className="card mb-4 shadow-sm">
