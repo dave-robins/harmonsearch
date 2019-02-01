@@ -8,19 +8,29 @@ const getParam = (item, param) => {
   return idObject[0].elements[0].text
 }
 
+const getLink = (item) => {
+  const urlObject = item.filter((element) => {
+    return element.name === "enclosure"
+  })
+  return urlObject[0].attributes.url
+}
+
 const trimDescription = (text) => {
   const arr = text.replace("<br>", "").split("<br>")
   return arr[0]
 }
 
+const linkStyle = {
+  color: '#000000'
+}
+
 const Episode = (props) => {
   const { episode } = props
-  // console.log(episode)
-
+  
   return (
     <div className="card mb-4 shadow-sm">
       <div className="card-body">
-        <h5>{getParam(episode, "title")}</h5>
+        <h5><a href={getLink(episode)} style={linkStyle}> {getParam(episode, "title")}</a></h5>
         <p>{trimDescription(getParam(props.episode, "description"))}</p>
         <Link 
           to={`details/episode/${(getParam(episode, "title")).replace(/ /g, '_')}`}
