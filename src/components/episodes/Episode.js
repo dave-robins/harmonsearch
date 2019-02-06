@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const getParam = (item, param) => {
   const idObject = item.filter((element) => {
@@ -26,14 +27,19 @@ const linkStyle = {
 
 const Episode = (props) => {
   const { episode } = props
+  const title = getParam(episode, "title")
+  const description = trimDescription(getParam(episode, "description"))
+  const pubDate = moment(getParam(episode, "pubDate")).format("l")
+  const url = getLink(episode)
   
   return (
     <div className="card mb-4 shadow-sm">
       <div className="card-body">
-        <h5><a href={getLink(episode)} style={linkStyle}> {getParam(episode, "title")}</a></h5>
-        <p>{trimDescription(getParam(props.episode, "description"))}</p>
+        <h5><a href={url} style={linkStyle}> {title}</a></h5>
+        <i>{pubDate}</i>
+        <p>{description}</p>
         <Link 
-          to={`details/episode/${(getParam(episode, "title")).replace(/ /g, '_')}`}
+          to={`details/episode/${title.replace(/ /g, '_')}`}
           className="btn btn-dark btn-block"
         >
           <i className="fas fa-chevron-right"></i> View Details
