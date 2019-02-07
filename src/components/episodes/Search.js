@@ -6,6 +6,11 @@ class Search extends Component {
     trackTitle: ''
   }
 
+  findEpisode = (e) => {
+    e.preventDefault()
+    console.log("search pressed")
+  }
+
   onChange = (e) => {
     this.setState({[e.target.name]: e.target.value })
   }
@@ -20,7 +25,7 @@ class Search extends Component {
                 <i className="fas fa-microphone"></i> Search Bar
               </h1>
               <p className="lead text-center">Search for an episode</p>
-              <form>
+              <form onSubmit={this.findEpisode}>
                 <div className="form-group">
                   <input 
                     type="text" 
@@ -31,6 +36,9 @@ class Search extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                <button className="btn btn-primary btn-lg btn-block mb-5" type="submit">
+                  Search
+                </button>
               </form>
             </div>
           )

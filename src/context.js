@@ -3,6 +3,17 @@ import convert from 'xml-js';
 
 const Context = React.createContext()
 
+const episode = {
+  title: "",
+  description: "",
+  pubDate: "",
+  duration: "",
+  url: ""
+}
+/* map over episode list, unwrap each "item", set to episode, 
+* append to new array, pass array into state
+*/
+
 export class Provider extends Component {
     state = {
         episode_list: [],
@@ -14,9 +25,8 @@ componentDidMount(){
       .then(res => res.text())
       .then(data => {
         var newJson = convert.xml2js(data);
-        let filtered = (newJson.elements[0].elements[0].elements).filter((episode) => {
-            return episode.name === "item"
-        })
+        let unwrapped = (newJson.elements[0].elements[0].elements)
+        let filtered = unwrapped.filter((episode) => episode.name === "item")
         this.setState({episode_list: filtered})
       })
 }
