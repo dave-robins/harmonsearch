@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import convert from 'xml-js';
+import convert from 'xml-js'
+import moment from 'moment'
 
 const Context = React.createContext()
 
@@ -10,14 +11,13 @@ const formatEpisodes = (json => {
     const episode = {
       title: getParam(ep.elements, "title"),
       description: trimDescription(getParam(ep.elements, "description")),
-      pubDate: getParam(ep.elements, "pubDate"),
+      pubDate: moment(getParam(ep.elements, "pubDate")).format("l"),
       duration: getParam(ep.elements, "itunes:duration"),
       url: getLink(ep.elements)
     }
     episodes.push(episode)
     return episode
   })
-  console.log(episodes)
   return episodes
 })
 
