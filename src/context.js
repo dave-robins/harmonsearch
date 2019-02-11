@@ -11,7 +11,7 @@ const formatEpisodes = (json => {
     const episode = {
       title: getParam(ep.elements, "title"),
       description: trimDescription(getParam(ep.elements, "description")),
-      pubDate: moment(getParam(ep.elements, "pubDate")).format("l"),
+      pubDate: moment(getParam(ep.elements, "pubDate")).format("MMMM Do, YYYY"),
       duration: getParam(ep.elements, "itunes:duration"),
       url: getLink(ep.elements)
     }

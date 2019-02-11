@@ -8,7 +8,6 @@ class Search extends Component {
 
   findEpisode = (e) => {
     e.preventDefault()
-    console.log("search pressed")
   }
 
   onChange = (e) => {
