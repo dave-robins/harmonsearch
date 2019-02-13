@@ -10,17 +10,12 @@ class Search extends Component {
   }
 
   search = () => {
-    const arr = heresTheList.map(episode => {
-      let values = Object.values(episode).filter(value => value.includes(this.state.trackTitle))
-      // console.log("values", values)
-      console.log(values.find(value => {value.includes("Schrab")}))
+    const arr = heresTheList.filter(episode => {
+      let values = Object.values(episode)
+      let filtered = values.filter(value => value.includes(this.state.trackTitle))
+      if (filtered && filtered.length) {return episode}
     })
-    // console.log(arr)
-  }
-
-  findEpisode = (e) => {
-    e.preventDefault()
-    console.log(e)
+    this.setState({searchList: arr})
   }
 
   onChange = (e) => {
@@ -32,6 +27,7 @@ class Search extends Component {
     return (
       <Consumer>
         {value => {
+          // const { dispatch } = value
           heresTheList = value.masterList
           return (
             <div className="card card-body mb-4 p-4">
@@ -43,6 +39,7 @@ class Search extends Component {
                 <div className="form-group">
                   <input 
                     type="text" 
+                    autoComplete="off"
                     className="form-control form-control-lg" 
                     placeholder="Enter text"
                     name="trackTitle"
@@ -50,9 +47,6 @@ class Search extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                {/* <button className="btn btn-primary btn-lg btn-block mb-5" type="submit">
-                  Search
-                </button> */}
               </form>
             </div>
           )
