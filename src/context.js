@@ -4,16 +4,30 @@ import moment from 'moment'
 
 const Context = React.createContext()
 
+const reducer = (state, action) => {
+  switch(action.type){
+    case 'SEARCH':
+      return {
+        ...state,
+        masterList: action.payload,
+        heading: 'Search Results'
+      }
+    default:
+      return state
+  }
+}
+
 const formatEpisodes = (json => {
   const episodes = []
   const filtered = (json.elements[0].elements[0].elements).filter((episode) => episode.name === "item")
-  filtered.map(ep => {
+  filtered.map((ep, index) => {
     const episode = {
       title: getParam(ep.elements, "title"),
       description: trimDescription(getParam(ep.elements, "description")),
       pubDate: moment(getParam(ep.elements, "pubDate")).format("MMMM Do, YYYY"),
       duration: getParam(ep.elements, "itunes:duration"),
-      url: getLink(ep.elements)
+      url: getLink(ep.elements),
+      number: (filtered.length - index).toString(),
     }
     episodes.push(episode)
     return episode
@@ -44,7 +58,8 @@ export class Provider extends Component {
   state = {
       episode_list: [],
       masterList: [],
-      heading: 'Recent Episodes'
+      heading: 'Recent Episodes',
+      dispatch: action => this.setState(state => reducer(state, action))
   }
 
   componentDidMount(){

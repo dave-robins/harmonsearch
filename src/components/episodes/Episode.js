@@ -11,7 +11,7 @@ const Episode = (props) => {
   return (
     <div className="card mb-4 shadow-sm">
       <div className="card-body">
-        <h5><a href={episode.url} style={linkStyle}> {episode.title}</a></h5>
+        <h5><a href={episode.url} style={linkStyle}>{episode.number}: {episode.title}</a></h5>
         <i>{episode.pubDate}</i>
         <p>{episode.description}</p>
         <Link 
