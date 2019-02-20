@@ -5,16 +5,14 @@ let episodesArr = []
 
 class Search extends Component {
   state = {
-    trackTitle: ''
+    searchedText: ''
   }
 
-  search = (dispatch, e) => {
-    e.preventDefault()
+  search = (dispatch) => {
 
-    console.log("dispatch: ", dispatch)
     const arr = episodesArr.filter(episode => {
       let values = Object.values(episode)
-      let filtered = values.filter(value => value.includes(this.state.trackTitle))
+      let filtered = values.filter(value => value.includes(this.state.searchedText))
       if (filtered && filtered.length) {return episode}
     })
     dispatch({
@@ -23,8 +21,10 @@ class Search extends Component {
     })
   }
 
-  onChange = (e) => {
+  onChange = (dispatch, e) => {
     this.setState({[e.target.name]: e.target.value })
+    e.preventDefault()
+    this.search(dispatch)
   }
 
   render() {
@@ -39,16 +39,16 @@ class Search extends Component {
                 <i className="fas fa-microphone"></i> Search Bar
               </h1>
               <p className="lead text-center">Search for an episode</p>
-              <form onSubmit={this.search.bind(this, dispatch)}>
+              <form>
                 <div className="form-group">
                   <input 
                     type="text" 
                     autoComplete="off"
                     className="form-control form-control-lg" 
                     placeholder="Enter text"
-                    name="trackTitle"
-                    value={this.state.trackTitle}
-                    onChange={this.onChange}
+                    name="searchedText"
+                    value={this.state.searchedText}
+                    onChange={this.onChange.bind(this, dispatch)}
                   />
                 </div>
               </form>
