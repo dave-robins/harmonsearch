@@ -8,7 +8,7 @@ const reducer = (state, action) => {
     case 'SEARCH':
       return {
         ...state,
-        masterList: action.payload,
+        episodeList: action.payload,
         heading: 'Search Results'
       }
     default:
@@ -19,6 +19,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
       masterList: [],
+      episodeList: [],
       heading: 'Recent Episodes',
       dispatch: action => this.setState(state => reducer(state, action))
   }
@@ -27,13 +28,17 @@ export class Provider extends Component {
       fetch('https://feeds.megaphone.fm/harmontown')
         .then(res => res.text())
         .then(data => {
+          const array = formatXml(data)
           this.setState({
-            masterList: formatXml(data)
+            masterList: array,
+            episodeList: array
           })
         })
   }
 
   render() {
+    console.log("episode ", this.state.episodeList)
+    console.log("master ", this.state.masterList)
       return (
           <Context.Provider value={this.state}>
               {this.props.children}

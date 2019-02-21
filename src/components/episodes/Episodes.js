@@ -8,15 +8,16 @@ class Episodes extends Component {
     return (
       <Consumer>
         {value => {
-          const { masterList, heading } = value
-          if(masterList === undefined || masterList.length === 0) {
+          const { episodeList, heading } = value
+          console.log("episodes in Episode file : ", episodeList)
+          if(episodeList === undefined || episodeList.length === 0) {
               return <Spinner />
           } else {
             return (
               <React.Fragment>
                 <h3 className ="text-center mb-4">{heading}</h3>
                 <div>
-                  {masterList.map(item => (
+                  {episodeList.map(item => (
                     <Episode 
                       key={item.title.replace(/ /g, '_')}
                       episode={item}
