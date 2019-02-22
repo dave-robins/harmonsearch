@@ -9,7 +9,6 @@ class Episodes extends Component {
       <Consumer>
         {value => {
           const { episodeList, heading } = value
-          console.log("episodes in Episode file : ", episodeList)
           if(episodeList === undefined || episodeList.length === 0) {
               return <Spinner />
           } else {

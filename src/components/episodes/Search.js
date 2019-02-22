@@ -9,8 +9,7 @@ class Search extends Component {
     searchedText: ''
   }
 
-  search = (dispatch) => {
-
+  search = debounce((dispatch) => {
     const arr = episodesArr.filter(episode => {
       let values = Object.values(episode)
       let filtered = values.filter(value => value.includes(this.state.searchedText))
@@ -20,7 +19,7 @@ class Search extends Component {
       type: 'SEARCH',
       payload: arr
     })
-  }
+  }, 200)
 
   onChange = (dispatch, e) => {
     this.setState({[e.target.name]: e.target.value })
@@ -40,7 +39,7 @@ class Search extends Component {
                 <i className="fas fa-microphone"></i> Search Bar
               </h1>
               <p className="lead text-center">Search for an episode</p>
-              <form>
+              <form onSubmit={this.onChange.bind(this, dispatch)}>
                 <div className="form-group">
                   <input 
                     type="text" 
