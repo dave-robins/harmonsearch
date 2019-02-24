@@ -19,11 +19,15 @@ class Search extends Component {
       type: 'SEARCH',
       payload: arr
     })
-  }, 200)
+  }, 250)
 
   onChange = (dispatch, e) => {
     this.setState({[e.target.name]: e.target.value })
     e.preventDefault()
+    dispatch({
+      type: 'SEARCH',
+      payload: []
+    })
     this.search(dispatch)
   }
 

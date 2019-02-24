@@ -37,8 +37,6 @@ export class Provider extends Component {
   }
 
   render() {
-    // console.log("episode ", this.state.episodeList)
-    // console.log("master ", this.state.masterList)
       return (
           <Context.Provider value={this.state}>
               {this.props.children}
