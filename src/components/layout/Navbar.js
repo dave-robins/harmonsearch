@@ -1,9 +1,12 @@
 import React from 'react'
+import logo from '../../main.png'
 
 const Navbar = () => {
   return ( 
-  <nav className="navbar navbar-dark bg-dark mb-5">
-    <span className="navbar-brand mb-0 h1 mx-auto">HarmonTest</span>
+  <nav>
+    <span>
+      <a href="/"> <img class="img-fluid" src={logo} alt=""/></a>
+    </span>
   </nav>
   )
 }
