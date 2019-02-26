@@ -1,5 +1,6 @@
 import convert from 'xml-js'
 import moment from 'moment'
+import htmlToText from 'html-to-text'
 
 const formatXml = (data => {
   var json = convert.xml2js(data);
@@ -42,8 +43,9 @@ const getLink = (item) => {
 }
 
 const trimDescription = (text) => {
-  const arr = text.replace("<br>", "").split("<br>")
-  return arr[0]
+  const full = htmlToText.fromString(text)
+  const edited = full.substring(0, full.length - 95).trim()
+  return edited
 }
 
 export default formatXml
