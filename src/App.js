@@ -14,11 +14,16 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Navbar/>
+          <hr class="line"/>
           <div className="container">
             <Switch>
               <Route exact path="/" component={Index}/>
               <Route exact path="/details/episode/:id" component={Details}/>
             </Switch>
+          </div>
+          <div class="footer">
+            <hr class="line"/>
+            <p>©2019 David Robins</p>
           </div>
         </React.Fragment>
       </Router>

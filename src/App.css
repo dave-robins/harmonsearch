@@ -4,3 +4,16 @@
   padding-left: 15%;
   padding-right: 15%;
 }
+
+.line {
+  width: 85%;
+}
+
+.footer {
+  text-align: center;
+  color: gray;
+  font-family: 'Helvetica Neue';
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
