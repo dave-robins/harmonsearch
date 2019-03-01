@@ -12,7 +12,10 @@ class Search extends Component {
   search = debounce((dispatch) => {
     const arr = episodesArr.filter(episode => {
       let values = Object.values(episode)
-      let filtered = values.filter(value => value.includes(this.state.searchedText))
+      let filtered = values.filter(value => {
+        value = typeof value === 'string' ? value.toLowerCase() : value
+        return value.includes(this.state.searchedText.toLowerCase())
+      })
       if (filtered && filtered.length) {return episode}
     })
     dispatch({
