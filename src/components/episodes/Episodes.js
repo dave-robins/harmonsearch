@@ -7,12 +7,14 @@ class Episodes extends Component {
   state = {loading: true}
 
   renderEpisodes = (list) => {
+    if (list && list.length > 0){
     return list.map(item => (
       <Episode 
         key={item.title.replace(/ /g, '_')}
         episode={item}
       />
     ))
+    } else {return <p className ="text-center mb-4"> 0 Episodes Found</p>}
   }
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class Episodes extends Component {
       <Consumer>
         {value => {
           const { episodeList, heading } = value
-          if(episodeList === undefined || episodeList.length === 0 || this.state.loading) {
+          if(episodeList === undefined || this.state.loading) {
               return <Spinner />
           } else {
             return (
