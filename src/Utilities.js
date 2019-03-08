@@ -5,8 +5,6 @@ import htmlToText from 'html-to-text'
 const formatXml = (data => {
   var json = convert.xml2js(data);
   const episodeArray = formatEpisodes(json)
-  // let unwrapped = (json.elements[0].elements[0].elements)
-  // let filtered = unwrapped.filter((episode) => episode.name === "item")
   return episodeArray
 })
 
@@ -44,8 +42,8 @@ const getLink = (item) => {
 
 const trimDescription = (text) => {
   const full = htmlToText.fromString(text)
-  const edited = full.substring(0, full.length - 95).trim()
-  return edited
+  const edited = full.replace("Learn more about your ad choices. Visit megaphone.fm/adchoices", "").trim()
+  return edited.replace("[https://megaphone.fm/adchoices]", "")
 }
 
 export default formatXml
