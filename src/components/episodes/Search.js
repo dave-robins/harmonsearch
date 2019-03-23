@@ -42,7 +42,7 @@ class Search extends Component {
           episodesArr = value.masterList
           return (
               <form onSubmit={this.onChange.bind(this, dispatch)}>
-                <div className="form-group">
+                <div className="form-group shadow-sm">
                   <input 
                     type="text" 
                     autoComplete="off"

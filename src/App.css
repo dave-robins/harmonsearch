@@ -17,3 +17,14 @@
   left: 0px;
   width: 100%;
 }
+
+.card {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.form-group {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  width: 90%;
+}
