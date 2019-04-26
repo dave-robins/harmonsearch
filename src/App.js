@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Spinner from './components/layout/Spinner'
 import Navbar from './components/layout/Navbar'
 import Index from './components/layout/Index'
-import Details from './components/episodes/Details'
+import About from './components/episodes/About'
 import { Provider } from './context'
 import './App.css'
 
@@ -29,14 +29,9 @@ class App extends Component {
         <React.Fragment>
           <Navbar/>
           <div className="container">
-            <div className="link-container">
-              <a href="/" className="link-text">Search</a>
-              <a href="/about" className="link-text">About</a>
-            </div>
-            <hr className="line"/>
             <Switch>
               <Route exact path="/" component={Index}/>
-              <Route exact path="/about" component={Details}/>
+              <Route exact path="/about" component={About}/>
             </Switch>
           </div>
         </React.Fragment>
