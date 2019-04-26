@@ -28,16 +28,16 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Navbar/>
-          <hr class="line"/>
           <div className="container">
+            <div className="link-container">
+              <a href="/" className="link-text">Search</a>
+              <a href="/about" className="link-text">About</a>
+            </div>
+            <hr className="line"/>
             <Switch>
               <Route exact path="/" component={Index}/>
-              <Route exact path="/details/episode/:id" component={Details}/>
+              <Route exact path="/about" component={Details}/>
             </Switch>
-          </div>
-          <div class="footer">
-            <hr class="line"/>
-            <p>©2019 David Robins</p>
           </div>
         </React.Fragment>
       </Router>

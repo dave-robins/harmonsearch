@@ -23,24 +23,11 @@ class Details extends Component {
 
   render() {
     return (
-      <Consumer>
-        {value => {
-          const { episode_list } = value
-          if(episode_list === undefined || episode_list.length === 0) {
-              return <Spinner />
-          } else {
-            return (
-              <React.Fragment>
-                <h3 className ="text-center mb-4">{keyAsTitle(this.props.match.params.id)}</h3>
-                <div>
-                  {getDescription(episode_list, this.props.match.params.id)}
-                  episode description
-                </div>
-              </React.Fragment>
-            )
-          }
-        }}
-      </Consumer>
+      <div class="about-text">
+        <h1>About page</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
     )
   }
 }

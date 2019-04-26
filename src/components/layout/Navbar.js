@@ -5,7 +5,7 @@ const Navbar = () => {
   return ( 
   <nav>
     <span>
-      <img class="img-fluid" src={logo} alt=""/>
+      <img className="img-fluid" src={logo} alt="Harmon Search"/>
     </span>
   </nav>
   )
