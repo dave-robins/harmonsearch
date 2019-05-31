@@ -5,8 +5,8 @@ class About extends Component {
     return (
       <div class="about-text">
         <h1>About page</h1>
-        <p>A search utility for the Harmontown podcast. </p>
-        <p>No affiliation with Dan Harmon or Starburns Industries, created for the love of the show.</p>
+        <p>A fan-made search utility for the Harmontown podcast. </p>
+        <p>No affiliation with Dan Harmon or Starburns Industries.</p>
       </div>
     )
   }

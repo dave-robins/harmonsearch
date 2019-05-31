@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Consumer } from '../../context'
-import { debounce } from 'lodash'
+import { debounce, map } from 'lodash'
 
 let episodesArr = []
 
@@ -10,19 +10,34 @@ class Search extends Component {
   }
 
   search = debounce((dispatch) => {
-    const arr = episodesArr.filter(episode => {
+    const filteredArr = episodesArr.filter(episode => {
       let values = Object.values(episode)
-      let filtered = values.filter(value => {
-        value = typeof value === 'string' ? value.toLowerCase() : value
-        return value.includes(this.state.searchedText.toLowerCase())
-      })
+      let filtered = this.matchValue(values)
+      // let filtered = values.filter(value => {
+      //   value = typeof value === 'string' ? value.toLowerCase() : value
+      //   return value.includes(this.state.searchedText.toLowerCase())
+      // })
+      // console.log("filtered: ", filtered)
       if (filtered && filtered.length) {return episode}
     })
     dispatch({
       type: 'SEARCH',
-      payload: arr
+      payload: filteredArr
     })
   }, 250)
+
+  matchValue = (values) => { 
+    let searchText = this.state.searchedText.split(" ")
+    let filtered = values.filter(val => {
+      val = typeof val === 'string' ? val.toLowerCase() : val
+      let includedCheck = map(searchText, word => {
+        return val.includes(`${word} `.toLowerCase())
+      })
+      return includedCheck.includes(true)
+    })
+    // console.log(filtered)
+    return filtered
+  }
 
   onChange = (dispatch, e) => {
     this.setState({[e.target.name]: e.target.value })
