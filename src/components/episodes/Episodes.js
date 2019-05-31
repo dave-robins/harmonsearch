@@ -5,11 +5,20 @@ import Episode from './Episode'
 
 class Episodes extends Component {
   state = {
-    loading: true
+    loading: true,
+    visible: 5
   }
 
+  seeMore() {
+    this.setState((prev) => {
+      return {visible: prev.visible + 4}
+    })
+  }
+
+  seeMore = this.seeMore.bind(this);
+
   renderEpisodes = (list) => {
-    return list.map(item => (
+    return (list.slice(0, this.state.visible)).map(item => (
       <Episode 
         key={item.title.replace(/ /g, '_')}
         episode={item}
@@ -20,6 +29,8 @@ class Episodes extends Component {
   componentDidMount() {
     setTimeout(() => this.setState({loading: false}), 500)
   }
+
+  // this.setState({ visible: 5 })
   
   render() {
     return (
@@ -35,6 +46,9 @@ class Episodes extends Component {
                 <div>
                   { this.renderEpisodes(episodeList) }
                 </div>
+                {this.state.visible < episodeList.length &&
+                  <button onClick={this.seeMore} type="button">See More</button>
+                }
               </React.Fragment>
             )
           }
