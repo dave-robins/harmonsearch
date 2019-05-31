@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Spinner from './components/layout/Spinner'
 import Navbar from './components/layout/Navbar'
 import Index from './components/layout/Index'
@@ -19,24 +19,28 @@ class App extends Component {
   render() {
     const { loading } = this.state;
     if(loading) {
-      console.log("test test")
       return <Spinner/>
     }
 
     return (
+      <div>
+      <Navbar/>
       <Provider>
       <Router>
         <React.Fragment>
-          <Navbar/>
           <div className="container">
             <Switch>
-              <Route exact path="/" component={Index}/>
+              <Route exact path="/search" component={Index}/>
+              <Route exact path="/">
+                <Redirect to="/search" />
+              </Route>
               <Route exact path="/about" component={About}/>
             </Switch>
           </div>
         </React.Fragment>
       </Router>
       </Provider>
+      </div>
     )
   }
 }

@@ -35,7 +35,6 @@ class Search extends Component {
       })
       return includedCheck.includes(true)
     })
-    // console.log(filtered)
     return filtered
   }
 
