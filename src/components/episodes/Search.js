@@ -13,11 +13,6 @@ class Search extends Component {
     const filteredArr = episodesArr.filter(episode => {
       let values = Object.values(episode)
       let filtered = this.matchValue(values)
-      // let filtered = values.filter(value => {
-      //   value = typeof value === 'string' ? value.toLowerCase() : value
-      //   return value.includes(this.state.searchedText.toLowerCase())
-      // })
-      // console.log("filtered: ", filtered)
       if (filtered && filtered.length) {return episode}
     })
     dispatch({
@@ -26,7 +21,7 @@ class Search extends Component {
     })
   }, 250)
 
-  matchValue = (values) => { 
+  matchValue = (values) => {
     let searchText = this.state.searchedText.split(" ")
     let filtered = values.filter(val => {
       val = typeof val === 'string' ? val.toLowerCase() : val
@@ -57,10 +52,10 @@ class Search extends Component {
           return (
               <form onSubmit={this.onChange.bind(this, dispatch)}>
                 <div className="form-group shadow-sm">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     autoComplete="off"
-                    className="form-control form-control-lg" 
+                    className="form-control form-control-lg"
                     placeholder="Enter text"
                     name="searchedText"
                     value={this.state.searchedText}

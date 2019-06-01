@@ -26,19 +26,19 @@ class App extends Component {
       <div>
       <Navbar/>
       <Provider>
-      <Router>
-        <React.Fragment>
-          <div className="container">
-            <Switch>
-              <Route exact path="/search" component={Index}/>
-              <Route exact path="/">
-                <Redirect to="/search" />
-              </Route>
-              <Route exact path="/about" component={About}/>
-            </Switch>
-          </div>
-        </React.Fragment>
-      </Router>
+        <Router>
+          <React.Fragment>
+            <div className="container">
+              <Switch>
+                <Route exact path="/search" component={Index}/>
+                <Route exact path="/">
+                  <Redirect to="/search" />
+                </Route>
+                <Route exact path="/about" component={About}/>
+              </Switch>
+            </div>
+          </React.Fragment>
+        </Router>
       </Provider>
       </div>
     )

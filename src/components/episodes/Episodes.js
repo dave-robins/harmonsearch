@@ -2,24 +2,39 @@ import React, { Component } from 'react'
 import { Consumer } from '../../context'
 import Spinner from '../layout/Spinner'
 import Episode from './Episode'
+import ToggleButton from 'react-toggle-button'
 
 class Episodes extends Component {
   state = {
     loading: true,
-    visible: 5
+    visible: 3,
+    toggle: "See All",
+    value: false
   }
 
-  seeMore() {
-    this.setState((prev) => {
-      return {visible: prev.visible + 4}
-    })
+  seeAll() {
+    if (this.state.visible){
+      this.setState({
+        visible: null,
+        toggle: "See Less",
+        value: true
+      })
+    } else {
+      this.setState({
+        visible: 3,
+        toggle: "See All",
+        value: false
+      })
+    }
+    this.forceUpdate()
   }
 
-  seeMore = this.seeMore.bind(this);
+  seeAll = this.seeAll.bind(this);
 
   renderEpisodes = (list) => {
-    return (list.slice(0, this.state.visible)).map(item => (
-      <Episode 
+    const initialList = this.state.visible ? list.slice(0, this.state.visible) : list
+    return initialList.map(item => (
+      <Episode
         key={item.title.replace(/ /g, '_')}
         episode={item}
       />
@@ -30,8 +45,6 @@ class Episodes extends Component {
     setTimeout(() => this.setState({loading: false}), 500)
   }
 
-  // this.setState({ visible: 5 })
-  
   render() {
     return (
       <Consumer>
@@ -43,12 +56,19 @@ class Episodes extends Component {
             return (
               <React.Fragment>
                 <h3 className ="text-center mb-4">{heading}</h3>
-                <div>
+                {this.state.visible < episodeList.length &&
+                  <ToggleButton
+                    inactiveLabel="Less"
+                    activeLabel="More"
+                    value={ this.state.value || false }
+                    onToggle={(value) => {
+                      this.seeAll()
+                    }}
+                  />
+                }
+                <div className="fade-in">
                   { this.renderEpisodes(episodeList) }
                 </div>
-                {this.state.visible < episodeList.length &&
-                  <button onClick={this.seeMore} type="button">See More</button>
-                }
               </React.Fragment>
             )
           }
