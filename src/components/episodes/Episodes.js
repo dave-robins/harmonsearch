@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Consumer } from '../../context'
 import Spinner from '../layout/Spinner'
 import Episode from './Episode'
-import ToggleButton from 'react-toggle-button'
 import expandIcon from '../../expand.svg'
 
 class Episodes extends Component {
