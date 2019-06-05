@@ -77,3 +77,7 @@ html, body {
   -moz-animation: fadein 1s; /* Firefox < 16 */
   animation: fadein 1s;
 }
+
+.expandButton {
+  text-align: center;
+}

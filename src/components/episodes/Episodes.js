@@ -3,6 +3,7 @@ import { Consumer } from '../../context'
 import Spinner from '../layout/Spinner'
 import Episode from './Episode'
 import ToggleButton from 'react-toggle-button'
+import expandIcon from '../../expand.svg'
 
 class Episodes extends Component {
   state = {
@@ -26,7 +27,6 @@ class Episodes extends Component {
         value: false
       })
     }
-    this.forceUpdate()
   }
 
   seeAll = this.seeAll.bind(this);
@@ -56,19 +56,10 @@ class Episodes extends Component {
             return (
               <React.Fragment>
                 <h3 className ="text-center mb-4">{heading}</h3>
-                {this.state.visible < episodeList.length &&
-                  <ToggleButton
-                    inactiveLabel="Less"
-                    activeLabel="More"
-                    value={ this.state.value || false }
-                    onToggle={(value) => {
-                      this.seeAll()
-                    }}
-                  />
-                }
                 <div className="fade-in">
                   { this.renderEpisodes(episodeList) }
                 </div>
+                <input type="image" src={expandIcon} onClick={this.seeAll} alt="Expand" />
               </React.Fragment>
             )
           }
