@@ -58,7 +58,9 @@ class Episodes extends Component {
                 <div className="fade-in">
                   { this.renderEpisodes(episodeList) }
                 </div>
-                <input type="image" src={expandIcon} onClick={this.seeAll} alt="Expand" />
+                <div className="expandButton">
+                  <input type="image" src={expandIcon} onClick={this.seeAll} alt="Expand" />
+                </div>
               </React.Fragment>
             )
           }
