@@ -34,6 +34,7 @@ class Search extends Component {
   }
 
   onChange = (dispatch, e) => {
+    window.scrollTo(0,0)
     this.setState({[e.target.name]: e.target.value })
     e.preventDefault()
     dispatch({
