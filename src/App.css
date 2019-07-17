@@ -36,7 +36,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-.container {
+.content {
   padding-bottom: 40px;
 }
 
@@ -65,4 +65,31 @@ html, body {
   margin: 0 auto;
   margin-bottom: 30px;
   width: 90%;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  animation: fadein 1s;
+}
+
+.expandDown {
+  text-align: center;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transition: transform .1s linear;
+}
+
+.expandUp {
+  text-align: center;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transition: transform .1s linear;
 }
