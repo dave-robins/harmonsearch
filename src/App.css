@@ -78,6 +78,18 @@ html, body {
   animation: fadein 1s;
 }
 
-.expandButton {
+.expandDown {
   text-align: center;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transition: transform .1s linear;
+}
+
+.expandUp {
+  text-align: center;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transition: transform .1s linear;
 }

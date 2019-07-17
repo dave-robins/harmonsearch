@@ -8,7 +8,7 @@ class Episodes extends Component {
   state = {
     loading: true,
     visible: 3,
-    toggle: "See All",
+    toggle: "expandDown",
     value: false
   }
 
@@ -16,13 +16,13 @@ class Episodes extends Component {
     if (this.state.visible){
       this.setState({
         visible: null,
-        toggle: "See Less",
+        toggle: "expandUp",
         value: true
       })
     } else {
       this.setState({
         visible: 3,
-        toggle: "See All",
+        toggle: "expandDown",
         value: false
       })
     }
@@ -58,7 +58,8 @@ class Episodes extends Component {
                 <div className="fade-in">
                   { this.renderEpisodes(episodeList) }
                 </div>
-                <div className="expandButton">
+                <div className={this.state.toggle}>
+                  { console.log("toggle: ", this.state.toggle) }
                   <input type="image" src={expandIcon} onClick={this.seeAll} alt="Expand" />
                 </div>
               </React.Fragment>
