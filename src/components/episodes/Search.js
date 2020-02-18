@@ -10,6 +10,8 @@ class Search extends Component {
   }
 
   search = debounce((dispatch) => {
+
+    // eslint-disable-next-line
     const filteredArr = episodesArr.filter(episode => {
       let values = Object.values(episode)
       let filtered = this.matchValue(values)
