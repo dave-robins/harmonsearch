@@ -44,8 +44,15 @@ const getLink = (item) => {
 
 const trimDescription = (text) => {
   const full = htmlToText.fromString(text)
-  const edited = full.replace("Learn more about your ad choices. Visit megaphone.fm/adchoices", "").trim()
-  return edited.replace("[https://megaphone.fm/adchoices]", "")
+  const edited = full
+    .replace(/\r?\n|\r/g, "")
+    .replace("Learn more about your ad choices. Visit megaphone.fm/adchoices", "").trim()
+    .replace("[https://megaphone.fm/adchoices]", "")
+    .replace("Learn more about your ad choices. Visitmegaphone.fm/adchoices", "")
+    .replace("Learn more about yourad choices. Visit megaphone.fm/adchoices", "")
+    .replace("Learn more about your ad choices.Visit megaphone.fm/adchoices", "")
+
+  return edited
 }
 
 export default formatXml
